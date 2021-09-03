@@ -1,0 +1,32 @@
+<form class="needs-validation" [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="form-row">
+    <div class="col-md-12 mb-12">
+      <label for="validationCustom01">First name</label>
+      <input type="text" class="form-control"
+        [ngClass]="{'is-invalid': loginForm.get('username').touched&&loginForm.get('username').invalid}"
+        id="validationCustom01" placeholder="First name" formControlName="username">
+      <div class="invalid-feedback">
+        Invalid username
+
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-12 mb-12">
+      <label for="validationCustom02">Password</label>
+      <input type="text" class="form-control"
+        [ngClass]="{'is-invalid': loginForm.get('password').touched&&loginForm.get('password').invalid}"
+        id="validationCustom02" placeholder="Password" formControlName="password">
+      <div class="invalid-feedback">
+        Invalid password
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col">
+      <button class="btn btn-primary" type="submit">Login</button>
+
+    </div>
+  </div>
+
+</form>
