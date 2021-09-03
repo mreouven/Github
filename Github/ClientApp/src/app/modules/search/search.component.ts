@@ -26,9 +26,9 @@ export class SearchComponent implements OnInit {
     });
   }
   submit() {
-    this.searchForm.reset();
     if (this.searchForm.valid) {
       this.search(this.searchForm.get("search").value);
+      this.searchForm.reset();
     }
   }
 }
