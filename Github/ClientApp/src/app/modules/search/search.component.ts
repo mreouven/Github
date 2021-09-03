@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { GitHubItem } from "src/app/shared/services/interfaces/gitHub.interface";
 import { SearchService } from "./services/search.service";
 
 @Component({
@@ -7,10 +9,26 @@ import { SearchService } from "./services/search.service";
   styleUrls: ["./search.component.scss"],
 })
 export class SearchComponent implements OnInit {
-  constructor(private searchService: SearchService) {}
+  searchForm: FormGroup;
+  loader = false;
+  constructor(private searchService: SearchService, private fb: FormBuilder) {}
 
-  ngOnInit() {}
-  search() {
-    this.searchService.search({ Query: "test" }).subscribe();
+  ngOnInit() {
+    this.searchForm = this.fb.group({
+      search: ["", Validators.required],
+    });
+  }
+  search(Query: string) {
+    this.loader = true;
+
+    this.searchService.search({ Query }).subscribe((x) => {
+      this.loader = false;
+    });
+  }
+  submit() {
+    this.searchForm.reset();
+    if (this.searchForm.valid) {
+      this.search(this.searchForm.get("search").value);
+    }
   }
 }

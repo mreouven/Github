@@ -14,12 +14,13 @@
       <td>{{item.id}}</td>
       <td>{{item.name}}</td>
       <td>{{item.desc}}</td>
-      <td class="fav" (click)="fav(item)"><i class="bi " [ngClass]="'bi-star-fill'"></i></td>
+      <td class="fav" (click)="fav(item)"><i class="bi "
+          [ngClass]="{'bi-star':!item.is_fav,'bi-star-fill':item.is_fav }"></i></td>
     </tr>
   </tbody>
 </table>
 <ng-template #nodata>
   <div class="alert alert-primary" role="alert">
-    This is a primary alert—check it out!
+    No Data
   </div>
 </ng-template>

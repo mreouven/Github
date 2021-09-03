@@ -1,0 +1,10 @@
+table {
+  .cil {
+    position: relative;
+    z-index: 1;
+    .fav {
+      position: relative;
+      z-index: 3;
+    }
+  }
+}

@@ -17,7 +17,7 @@ export class LoginService {
 
   login(credentials: ILoginRequest): Observable<ILoginResponse> {
     return this.httpClient.post<ILoginResponse>(
-      this.baseUrl + `api/search/search`,
+      this.baseUrl + `api/auth/login`,
       credentials
     );
   }

@@ -7,6 +7,7 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { NavMenuComponent } from "./nav-menu/nav-menu.component";
 import { AppRoutingModule } from "./app-routing.module";
+import { JWTInterceptor } from "./shared/services/interceptor/jwt.interceptor";
 
 @NgModule({
   declarations: [AppComponent, NavMenuComponent],
@@ -23,6 +24,7 @@ import { AppRoutingModule } from "./app-routing.module";
         return document.getElementsByTagName("base")[0].href;
       },
     },
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

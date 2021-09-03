@@ -14,7 +14,7 @@
   <div class="form-row">
     <div class="col-md-12 mb-12">
       <label for="validationCustom02">Password</label>
-      <input type="text" class="form-control"
+      <input type="password" class="form-control"
         [ngClass]="{'is-invalid': loginForm.get('password').touched&&loginForm.get('password').invalid}"
         id="validationCustom02" placeholder="Password" formControlName="password">
       <div class="invalid-feedback">
@@ -28,5 +28,4 @@
 
     </div>
   </div>
-
 </form>

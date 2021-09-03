@@ -9,8 +9,12 @@ import { AuthService } from "../shared/services/auth.service";
 })
 export class NavMenuComponent {
   isAuth: boolean;
+  name: string;
   constructor(private authSrv: AuthService, private router: Router) {
-    this.authSrv.isAuth.subscribe((status) => (this.isAuth = status));
+    this.authSrv.isAuth.subscribe((status) => {
+      this.isAuth = status;
+      this.name = this.authSrv.name;
+    });
   }
   isExpanded = false;
 
@@ -22,7 +26,7 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
   logout() {
-    this.authSrv.isAuth.next(false);
+    this.authSrv.logout();
     this.router.navigate(["/login"]);
   }
 }

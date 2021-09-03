@@ -1,1 +1,20 @@
-<p (click)="search()">search works!</p>
+<div class="main">
+  <div class="container">
+    <form (submit)="submit()" [formGroup]="searchForm">
+      <div class="form-group">
+        <label for="search">Search</label>
+        <input type="text" class="form-control" id="search" formControlName="search" placeholder="Search">
+      </div>
+
+      <button *ngIf="!loader" type="submit" class="btn btn-primary">Search</button>
+      <button *ngIf="loader" class="btn btn-primary" type="button" disabled>
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+        Loading...
+      </button>
+    </form>
+
+  </div>
+  <div class="container mt-5">
+    <app-table></app-table>
+  </div>
+</div>

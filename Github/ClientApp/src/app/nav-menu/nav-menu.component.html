@@ -11,12 +11,21 @@
           <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-dark" [routerLink]="['/search']">Search{{isAuth?'':'(NeedAuth)'}}</a>
           </li>
+          <ng-container *ngIf="isAuth">
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" [routerLink]="['/favorite']">Favorite</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark" (click)="logout()">Logout</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link text-dark">logged as({{name}})</a>
+            </li>
+          </ng-container>
           <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="!isAuth">
             <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" *ngIf="isAuth">
-            <a class="nav-link text-dark" (click)="logout()">Logout</a>
-          </li>
+
         </ul>
       </div>
     </div>
