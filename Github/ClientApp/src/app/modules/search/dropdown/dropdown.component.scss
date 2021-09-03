@@ -5,6 +5,9 @@
 }
 
 .dd {
+  box-shadow: 2px 11px 19px 0px black;
+  border-radius: 0px 0px 10px 15px;
+
   overflow-y: scroll;
   max-height: 338px;
   &::-webkit-scrollbar {
