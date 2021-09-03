@@ -1,0 +1,28 @@
+.br {
+  border: 1px solid #1c6ea4;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.dd {
+  overflow-y: scroll;
+  max-height: 338px;
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}

@@ -1,18 +1,17 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { FavoriteService } from "src/app/shared/services/favorite.service";
-import { GitHubService } from "src/app/shared/services/github-items.service";
 import {
   GitHubItem,
   GitHubItemFav,
 } from "src/app/shared/services/interfaces/gitHub.interface";
 
 @Component({
-  selector: "app-table",
-  templateUrl: "./table.component.html",
-  styleUrls: ["./table.component.scss"],
+  selector: "app-dropdown",
+  templateUrl: "./dropdown.component.html",
+  styleUrls: ["./dropdown.component.scss"],
 })
-export class TableComponent implements OnInit, OnDestroy {
+export class DropdownComponent implements OnInit, OnDestroy {
   data: GitHubItemFav[] = [];
   private subs: Subscription[] = [];
   constructor(private favoriteSrv: FavoriteService) {}

@@ -21,7 +21,7 @@ namespace Github.Services
                 client.DefaultRequestHeaders.UserAgent.TryParseAdd("request");
                 string myJsonResponse = await client.GetStringAsync($"https://api.github.com/search/repositories?q={q.Query}");
                 SearchGithubResult res = JsonConvert.DeserializeObject<SearchGithubResult>(myJsonResponse);
-                List<SearchGithubLiteResult> searchResults = res.items.Select(r => new SearchGithubLiteResult() { Url = r.url, Desc = r.description, Id = r.id, Name = r.name }).ToList();
+                List<SearchGithubLiteResult> searchResults = res.items.Select(r => new SearchGithubLiteResult() { Url = r.html_url, Desc = r.description, Id = r.id, Name = r.name }).ToList();
                 return searchResults;
 
             }

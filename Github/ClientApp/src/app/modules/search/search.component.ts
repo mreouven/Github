@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { GitHubItem } from "src/app/shared/services/interfaces/gitHub.interface";
 import { SearchService } from "./services/search.service";
 
 @Component({
@@ -11,6 +10,7 @@ import { SearchService } from "./services/search.service";
 export class SearchComponent implements OnInit {
   searchForm: FormGroup;
   loader = false;
+  open = false;
   constructor(private searchService: SearchService, private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -22,9 +22,17 @@ export class SearchComponent implements OnInit {
     this.loader = true;
 
     this.searchService.search({ Query }).subscribe((x) => {
+      this.open = true;
       this.loader = false;
     });
   }
+  triggerdd(action: boolean, event: any) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.open = action;
+  }
+
   submit() {
     if (this.searchForm.valid) {
       this.search(this.searchForm.get("search").value);

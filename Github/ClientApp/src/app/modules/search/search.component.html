@@ -3,18 +3,23 @@
     <form (submit)="submit()" [formGroup]="searchForm">
       <div class="form-group">
         <label for="search">Search</label>
-        <input type="text" class="form-control" id="search" formControlName="search" placeholder="Search">
+        <input type="text" class="form-control" (blur)="submit()" id="search" formControlName="search"
+          placeholder="Search">
       </div>
 
-      <button *ngIf="!loader" type="submit" class="btn btn-primary">Search</button>
-      <button *ngIf="loader" class="btn btn-primary" type="button" disabled>
-        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-        Loading...
-      </button>
+      <div class="spinner-border" *ngIf="loader" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </form>
 
   </div>
-  <div class="container mt-5">
-    <app-table></app-table>
+  <div class="container">
+    <div class="dd-cont" *ngIf="open" (clickOutside)="triggerdd(false)">
+      <app-dropdown></app-dropdown>
+    </div>
+
+    <button class="btn btn-primary" type="button" (click)="triggerdd(true,$event)" *ngIf="!open">
+      Open dropdown
+    </button>
   </div>
 </div>
